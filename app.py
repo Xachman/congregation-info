@@ -5,6 +5,9 @@ from datetime import datetime
 from pathlib import Path
 from pprint import pprint
 from os import environ
+import schedule as sched
+import logger
+
 app = Flask(__name__)
 
 
@@ -14,8 +17,11 @@ def main(path=''):
 
 
 @app.route('/schedule')
-def main(path=''):
-    return render_template('time.html')
+def schedule(path=''):
+    data = sched.getToday()
+    logger.log(data)
+   # return render_template('schedule.html')
+    return render_template('schedule.html', group=data.get('group', 'none'), type=data.get('type', 'none'))
 
 DEV = False
 if environ.get('DEV') == 'true':

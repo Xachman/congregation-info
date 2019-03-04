@@ -28,33 +28,11 @@
             font-size: 56px;
         }
     </style>
-    <script>
-        function startTime() {
-            var today = new Date();
-            var h = today.getHours() % 12;
-            var ampm = (today.getHours() > 11)? "PM":"AM"
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-            m = checkTime(m);
-            s = checkTime(s);
-            document.getElementById('time').innerHTML =
-            h + ":" + m + ":" + s + " " + ampm;
-            var t = setTimeout(startTime, 500);
-        }
-        function checkTime(i) {
-            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-            return i;
-        }
-    </script>
-    <script>
-    
-    
-    </script>
 <body onLoad="startTime()">
     <div class="scripture">
         <h1>"Do not be anxious, for I am your God."</h1>
         <h2>- Isaiah 41:10</h2>
+        <h3>{{ group }} - {{ type }}</h3>
     </div>
-    <div id="time"></div>
 </body>
 </html>

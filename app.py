@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main(path=''):
-    return render_template('time.html')
+    return render_template('layout.html', content='time')
 
 
 @app.route('/schedule')
@@ -21,7 +21,7 @@ def schedule(path=''):
     data = sched.getToday()
     logger.log(data)
    # return render_template('schedule.html')
-    return render_template('schedule.html', group=data.get('group', 'none'), type=data.get('type', 'none'))
+    return render_template('layout.html', content='schedule', group=data.get('group', 'none'), type=data.get('type', 'none'))
 
 DEV = False
 if environ.get('DEV') == 'true':
